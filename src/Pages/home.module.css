@@ -1,0 +1,374 @@
+body, html {
+    margin: 0;
+    padding: 0;
+ 
+
+    background-color: #000; /* Black background */
+	font-family: 'Montserrat', sans-serif; /* Similar font style */
+    color: #fff; /* White text color */
+    position: relative; 
+}
+
+.homecomponent{
+    overflow: hidden;
+}
+
+.container {
+   	width:57vw;
+	height: auto;
+    overflow: hidden;
+	margin-left: 11vw;
+    height :100vh;
+
+    animation: fadeInUp 1s ease-out; /* Apply animation */
+}
+.homedesc{
+    position: absolute;
+    top:25%;
+    width:57vw;
+}
+.mainhome{
+    width:100vw;
+    position: absolute;
+    overflow: hidden;
+    
+}
+
+.container h1 {
+    font-size: 1.7vh; /* Smaller text for subheading */
+    font-weight: 400;
+    letter-spacing: 2px; /* Adds spacing between letters */
+
+    text-transform: uppercase; /* Makes text uppercase */
+}
+
+.container h2 {
+    font-size: 11vh; /* Larger font size */
+    font-weight: 900; /* Extra bold text */
+    margin-bottom: 20px;
+
+  
+}
+
+@media (max-width: 912px) {
+    .container{
+        width:67vw;
+    }
+    .container .homedesc h1 {
+        font-size: 1.2vh;
+    }
+    .container .homedesc h2 {
+        font-size: 7vh;
+    }
+    .mainhome{
+        width:100vw;
+        position: absolute;
+        overflow: hidden;
+    }
+    .homedesc{
+        position: absolute;
+        top:30%;
+        width:67vw;
+    }
+    canvas {
+   display: none;
+    }
+  
+}
+@media (max-width: 1024px) {
+    .container{
+        width:77vw;
+    }
+    .container .homedesc h1 {
+        font-size: 1.2vh;
+    }
+    .container .homedesc h2 {
+        font-size: 6vh;
+    }
+    .mainhome{
+        width:100vw;
+        position: absolute;
+        overflow: hidden;
+    }
+    .homedesc{
+        position: absolute;
+        top:30%;
+        width:77vw;
+    }
+    canvas {
+        display: none;
+         }
+}
+
+
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out; /* Apply animation */
+}
+
+/* Overlay for film effect */
+.filmOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-image: url('noise.png'); /* Use your texture image */
+    opacity: 0.15; 
+    pointer-events: none; 
+}
+
+/* Hamburger Menu Icon */
+.menuIcon {
+    position: absolute;
+    top: 10vh;
+    right: 4vw;
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: fadeInUp .5s ease-out; /* Apply animation */
+}
+
+.menuIcon div {
+    width: 100%;
+    height: 1.5px;
+    background-color: #fff; /* White lines */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Navbar (hidden by default) */
+.navbar {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color:#000; /* Black with transparency */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 25;
+    
+}
+
+.navbar ul {
+    list-style-type: none;
+	
+    padding: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    margin: 20px 0;
+	margin-right:5vw;
+	
+}
+
+.navbar ul li a {
+    font-size:10vh;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+    opacity: 0.3;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.navbar ul li a.active, .navbar ul li a:hover {
+    opacity: 1;
+}
+
+/* Active State for Navbar */
+.navbar.active {
+    right: 0;
+}
+
+/* Transformations for Hamburger Icon */
+.menuIcon.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menuIcon.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.menuIcon.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+/* Hide social icons initially */
+.navbar .socialIcons {
+    display: none;
+}
+
+/* Show social icons when the navbar is active */
+.navbar.active .socialIcons {
+    display: flex;
+}
+
+/* Existing socialIcons styles */
+.socialIcons {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transition: right 0.3s ease;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.socialIcons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #1c1c1c;
+    border-radius: 50%;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+    animation: fadeIn 1s ease-out forwards, slideIn 1s ease-out forwards;
+  }
+  
+  /* Keyframes for transitions */
+  @keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+	to {
+	  opacity: 1;
+	}
+  }
+  
+  @keyframes slideIn {
+	from {
+	  transform: translate(50%, 60%);
+	}
+	to {
+	  transform: translate(0%, 0%);
+	}
+  }
+
+.socialIcons a img {
+    width: 24px;  /* Adjust size of the icons */
+    height: 24px; /* Adjust size of the icons */
+    filter: invert(100%);
+}
+
+.socialIcons a:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+@media (max-width: 912px) {
+	.navbar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	
+	}
+	.navbar ul li a {
+		font-size:4vh;
+	}
+	.socialIcons {
+		position: block;
+	
+	}
+	.socialIcons {
+		position: fixed;
+		top:80%;
+		left: 25%;
+		transition: right 0.3s ease;
+		flex-direction: row;
+		gap: 20px;
+	}
+}
+/* Navbar sliding down */
+@keyframes slideDown {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+/* Text fading in from below */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shapes sliding in from the sides */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.seeprojectss{
+    position: relative;
+    display: inline-block;
+    font-size: 2vh;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10; /* Ensure this is above the canvas */
+}
+.seeprojectss a{
+    text-decoration: none;
+    font-size: 2vh;
+    color: #fff;
+}
+
+.seeprojectss::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #fff;
+    transition: width 0.3s ease, right 0.3s ease;
+}
+
+.seeprojectss:hover::after {
+    width: 100%;
+    right: 0;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Starts from below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Ends at the normal position */
+    }
+}
